@@ -1,0 +1,43 @@
+<html>
+
+    <head>
+        <script>
+            function checkboxes()
+            {           
+               var firstName = document.getElementById("fName").value; 
+               if(firstName == "")
+               {
+                document.getElementById("fname").style.backgroundColor="redColor" ;
+                document.getElementById("fName").focus();
+               }
+            }
+
+        </script>
+        <title>Third Page</title>
+        <br />
+         <p></p>
+        <form action="">
+        <p>First Name: <input type="text" id="fName" required></p>
+        <p>Last Name: <input type="text" id="lName" required></p>
+        <p>Email: <input type="text" id="lName" required></p>
+        <h2>Do you accept our terms and conditions?</h2>
+        <input type="checkbox" name="Yes" Value="Yes" required>Yes<br>
+        <input type="checkbox" name="No" Value="No">No<br>
+        <button id="btnSubmit">Submit My Info</button>
+        </form>
+        <p><a href="page1.html">Go to the Home Page</a></p>
+        <p><a href="page2.html">Go to the Second Page</a></p>
+        
+    </body>
+</html>
+
+
+        
+    
+    
+    
+     
+       
+        
+
+

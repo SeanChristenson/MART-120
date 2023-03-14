@@ -1,0 +1,26 @@
+.blueColor {
+    color: bisque;
+    font-family: arial;
+    font-size: 32px;
+}
+    span.blueColor {
+        color: bisque;
+        font-family: arial;
+        font-size: 32px;
+      }
+  
+      #specificColor {
+        color: rgb(255, 123, 0);
+        font-family: verdana;
+        font-size: 24px;
+      }
+      
+      #specificLink {
+        color: rgb(255, 123, 0);
+        font-family: arial;
+        font-size: 28px;
+      }
+     .redColor{
+      color:crimson;
+
+     }
