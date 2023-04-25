@@ -36,7 +36,7 @@ function setup()
   }
 
 createCharacter(200,350);
-createObstacles(1);
+createObstacles();
 
 shapeXs[i] += shapeXSpeeds[i];
 shapeYs[i] += shapeYSpeeds[i];
@@ -60,7 +60,7 @@ function draw() {
   stroke(0);
   fill(0);
 
-  updateObstacles();
+  createObstacles();
 
   // call create border thingy
   createBorders(10);
@@ -72,7 +72,7 @@ function draw() {
   characterMovement();
 
   //Enemy
-  fill(10,145,10);
+  fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
   circle(shapeX, shapeY, 10);
 
   for (var i = 0; i < shapeXs.length; i++) {
@@ -104,7 +104,7 @@ function draw() {
     text("YOU WIN", width/2-50, height/2-50);
   }
 
-  fill(100,100,100);
+  fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
   circle(mouseShapeX, mouseShapeY, 25);
 
 
@@ -177,7 +177,7 @@ function createObstacles() {
   obstacle2YSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) +1);
 
   // draw obstacles
-  fill(255, 0, 0);
+  fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
   rect(obstacle1X, obstacle1Y, 50, 50);
   rect(obstacle2X, obstacle2Y, 50, 50);
 }
