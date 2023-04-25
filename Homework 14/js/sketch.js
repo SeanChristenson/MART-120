@@ -29,30 +29,34 @@ function setup()
     shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) +1);
     shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) +1);
     shapeXs[i] = random(500);
-    shapeYs[i] = random(600);
-    diameters[i] = random(30);
-    shapeXSpeeds.push(shapeXSpeed);
-    shapeYSpeeds.push(shapeYSpeed);
+    shapeYs[i] = random(500);
+    diameters[i] = random(10,50);
+    shapeXSpeeds[i] = shapeXSpeed;
+    shapeYSpeeds[i] = shapeYSpeed;
   }
 
-createCharacter(200,350);
-createObstacles();
-
-shapeXs[i] += shapeXSpeeds[i];
-shapeYs[i] += shapeYSpeeds[i];
-
-if (shapeXs[i] > width) {
+  createCharacter(100,350);
+  createObstacles();
+ for( var i = 0; i < 5; i++){
+  shapeXs[i] += shapeXSpeeds[i];
+  shapeYs[i] += shapeYSpeeds[i];
+ 
+  if (shapeXs[i] > width) {
   shapeXs[i] = 0;
-}
-if (shapeXs[i] < 0) {
+  }
+  
+  if (shapeXs[i] < 0) {
   shapeXs[i] = width;
-}
-if (shapeYs[i] > height) {
+  }
+  
+  if (shapeYs[i] > height) {
   shapeYs[i] = 0;
-}
-if (shapeYs[i] < 0) {
+  }
+  
+  if (shapeYs[i] < 0) {
   shapeYs[i] = height;
-}
+  }
+ }
 }
 
 function draw() {
@@ -72,31 +76,32 @@ function draw() {
   characterMovement();
 
   //Enemy
-  fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
-  circle(shapeX, shapeY, 10);
+  fill(50, 50, 50);
+  //circle(shapeX, shapeY, 10);
 
   for (var i = 0; i < shapeXs.length; i++) {
     circle(shapeXs[i], shapeYs[i], diameters[i]);
     shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) +1); 
     shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) +1);
   }
-
-  shapeX += shapeXSpeed;
-  shapeY += shapeYSpeed;
-
-  if(shapeX > width) {
-    shapeX = 0;
+  for( var i = 0; i < 5; i++){
+    
+  shapeXs[i] += shapeXSpeed;
+  shapeYs[i] += shapeYSpeed;
+  
+  if(shapeXs[i] > width) {
+    shapeXs[i] = 0;
   }
-  if(shapeX < 0) {
-    shapeX = width;
+  if(shapeXs[i] < 0) {
+    shapeXs[i] = width;
   }
-  if(shapeY > height) {
-    shapeY = 0;
+  if(shapeYs[i] > height) {
+    shapeYs[i] = 0;
   }
-  if(shapeY < 0) {
-    shapeY = height;
+  if(shapeYs[i] < 0) {
+    shapeYs[i] = height;
   }
-
+  
   if(characterX > width && characterY > width-50) {
     fill(0);
     stroke(5);
@@ -104,9 +109,9 @@ function draw() {
     text("YOU WIN", width/2-50, height/2-50);
   }
 
-  fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
+  fill(200, 200, 200);
   circle(mouseShapeX, mouseShapeY, 25);
-
+}
 
 }
 
@@ -115,19 +120,19 @@ function characterMovement()
 
   if(keyIsDown(w))
   {
-      characterY -= 10;
+      characterY -= 3;
   }
   if(keyIsDown(s))
   {
-      characterY += 10;
+      characterY += 3;
   }
   if(keyIsDown(a))
   {
-      characterX -= 10;
+      characterX -= 3;
   }
   if(keyIsDown(d))
   {
-      characterX += 10;
+      characterX += 3;
       console.log(characterX)
   }
 
@@ -164,6 +169,7 @@ function mouseClicked()
   mouseShapeY = mouseY;
 }
 
+// draws squares in random positions on the map
 function createObstacles() {
   // set random positions and speeds for obstacles
   obstacle1X = Math.floor(Math.random() * (width-50)) + 25;
@@ -178,8 +184,9 @@ function createObstacles() {
 
   // draw obstacles
   fill(Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256));
-  rect(obstacle1X, obstacle1Y, 50, 50);
-  rect(obstacle2X, obstacle2Y, 50, 50);
+  rect(obstacle1X, obstacle1Y, 30, 50);
+  rect(obstacle2X, obstacle2Y, 50, 30);
+  rect(obstacle2X, obstacle2Y, 10, 70);
 }
 
 function updateObstacles() {
