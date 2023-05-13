@@ -135,3 +135,50 @@ function checkWin(row, col) {
     resetGame();
   }
 }
+
+function checkDiagonal(row, col) {
+  let count = 0;
+  let i = row;
+  let j = col;
+  
+  // Check diagonal from bottom-left to top-right
+  while (i > 0 && j < cols - 1) {
+    i--;
+    j++;
+  }
+  while (i < rows && j >= 0) {
+    if (board[i][j] === currentPlayer) {
+      count++;
+      if (count === 4) {
+        return true;
+      }
+    } else {
+      count = 0;
+    }
+    i++;
+    j--;
+  }
+  
+ 
+  count = 0;
+  i = row;
+  j = col;
+  while (i > 0 && j > 0) {
+    i--;
+    j--;
+  }
+  while (i < rows && j < cols) {
+    if (board[i][j] === currentPlayer) {
+      count++;
+      if (count === 4) {
+        return true;
+      }
+    } else {
+      count = 0;
+    }
+    i++;
+    j++;
+  }
+  
+  return false;
+}
